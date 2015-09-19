@@ -1,0 +1,13 @@
+type Article {
+  title: String
+  description: String
+  body: String
+}
+
+type Query {
+  store: Store
+}
+
+type Store {
+  articles: [Article]
+}

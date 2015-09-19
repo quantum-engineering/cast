@@ -1,0 +1,65 @@
+{
+  "name": "cast-engine",
+  "version": "1.0.0",
+  "description": "A static blogging engine built with React, Relay and relay-local (static GraphQL implementation)",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/quantum-engineering/cast.git"
+  },
+  "license": "MIT",
+  "scripts": {
+    "build-css": "cssnext src/stylesheets/main.css -c dist/stylesheets/bundle.css",
+    "build-js": "browserify src/javascripts/main.js -d -o dist/javascripts/bundle.js",
+    "watch-js": "watchify src/javascripts/main.js -d -o dist/javascripts/bundle.js -v",
+    "uglify-js": "uglifyjs dist/javascripts/bundle.js -o dist/javascripts/bundle.js -v",
+    "watch-css": "cssnext --watch src/stylesheets/main.css dist/stylesheets/bundle.css --verbose",
+    "watch": "npm run watch-css & npm run watch-js",
+    "format-articles": "babel-node parser.js",
+    "build": "npm run format-articles && npm run build-js && npm run uglify-js && npm run build-css",
+    "update-schema": "babel-node builder/updateSchema.js"
+  },
+  "keywords": [
+    "relay",
+    "graphql",
+    "react"
+  ],
+  "author": "Gregory Tandiono <gregtandiono@gmail.com>",
+  "contributors": [{
+    "name": "Max Lin",
+    "email": "aaarrty@gmail.com"
+  }],
+  "dependencies": {
+    "babel-relay-plugin": "^0.2.4",
+    "faker": "^3.0.1",
+    "graphql": "^0.4.2",
+    "graphql-relay": "^0.3.1",
+    "marked": "^0.3.5",
+    "react": "^0.14.0-rc",
+    "react-dom": "^0.14.0-rc",
+    "react-relay": "^0.3.1",
+    "relay-local-schema": "^0.2.0"
+  },
+  "devDependencies": {
+    "babel": "^5.8.23",
+    "babel-core": "^5.8.24",
+    "babelify": "^6.3.0",
+    "browserify": "^11.1.0",
+    "colors": "^1.1.2",
+    "cssnext": "^1.8.4",
+    "front-matter": "^1.0.0",
+    "watchify": "^3.4.0"
+  },
+  "browserify": {
+    "transform": [
+      [
+        "babelify",
+        {
+          "stage": 0,
+          "plugins": [
+            "./builder/babelRelayPlugin.js"
+          ]
+        }
+      ]
+    ]
+  }
+}
