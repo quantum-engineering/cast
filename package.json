@@ -8,6 +8,7 @@
   },
   "license": "MIT",
   "scripts": {
+    "start": "http-server -p 8990",
     "build-css": "cssnext src/stylesheets/main.css -c dist/stylesheets/bundle.css",
     "build-js": "browserify src/javascripts/main.js -d -o dist/javascripts/bundle.js",
     "watch-js": "watchify src/javascripts/main.js -d -o dist/javascripts/bundle.js -v",
@@ -24,10 +25,12 @@
     "react"
   ],
   "author": "Gregory Tandiono <gregtandiono@gmail.com>",
-  "contributors": [{
-    "name": "Max Lin",
-    "email": "aaarrty@gmail.com"
-  }],
+  "contributors": [
+    {
+      "name": "Max Lin",
+      "email": "aaarrty@gmail.com"
+    }
+  ],
   "dependencies": {
     "babel-relay-plugin": "^0.2.4",
     "faker": "^3.0.1",
@@ -47,6 +50,7 @@
     "colors": "^1.1.2",
     "cssnext": "^1.8.4",
     "front-matter": "^1.0.0",
+    "http-server": "^0.8.4",
     "watchify": "^3.4.0"
   },
   "browserify": {

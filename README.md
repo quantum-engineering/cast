@@ -8,7 +8,7 @@ version: 0.0.1 (*pre-alpha*)
 - YAML Front-Matter Support
 - Full markdown support
 - Local Relay-GraphQL (without GraphQL server)
-- Using React 0.14.0-rc (release candidate)
+- Using React v0.14.x (release candidate)
 - CSSNext
 
 ## How to build the project

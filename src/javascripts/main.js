@@ -17,6 +17,15 @@ class Article extends Component {
       <li>
         <h2>{title}</h2>
         <p>{description}</p>
+        {/*
+
+          @TODO:
+
+          I need to think of a better way to
+          inject html elements into the DOM, componentDidMount maybe?
+          via ref? finDOMNODE?
+
+          */}
         <div dangerouslySetInnerHTML={ {__html: body} } />
       </li>
     )
