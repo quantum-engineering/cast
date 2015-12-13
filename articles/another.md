@@ -1,8 +1,8 @@
 ---
-title: Another Hackin
-description: lorem ipsum
+title: Article 1
+description: Description goes here
 ---
 
-# Awesome Balls
+# Article goes here
 
-## This is even better
+Body goes here
