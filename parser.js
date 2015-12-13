@@ -31,7 +31,9 @@ reader()
           var meta = rawData.attributes;
           var title = meta.title;
           var description = meta.description;
-          var body = marked(rawData.body);
+          // var body = marked(rawData.body);
+
+          var body = rawData.body;
 
           var set = { title, description, body }
           return set

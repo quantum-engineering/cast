@@ -1,27 +1,14 @@
 import React, {Component} from "react"
 import ReactDOM, {render, findDOMNode} from "react-dom"
 import Relay from "react-relay"
-import RelayLocalSchema from 'relay-local-schema';
+import RelayLocalSchema from 'relay-local-schema'
+import marked from "marked"
 
 import schema from "../data/schema"
 
 Relay.injectNetworkLayer(new RelayLocalSchema.NetworkLayer({schema}));
 
 class Article extends Component {
-  constructor(props) {
-    super(props)
-
-    this.state = {
-      body: ""
-    }
-  }
-
-  componentDidMount() {
-    if (this.props.article && this.props.article.body) {
-      this.setState({ body: this.props.article.body })
-    }
-  }
-
   render() {
 
     var {title, description, body} = this.props.article
@@ -30,21 +17,16 @@ class Article extends Component {
       <li>
         <h2>{title}</h2>
         <p>{description}</p>
-        {/*
 
-          @TODO:
-
-        <div dangerouslySetInnerHTML={ {__html: body} } />
-          I need to think of a better way to
-          inject html elements into the DOM, componentDidMount maybe?
-          via ref? finDOMNODE?
-
-          */}
-
-        <div>{this.state.body}</div>
+        <div dangerouslySetInnerHTML={ {__html: this._parseRawMarkup()} } />
 
       </li>
     )
+  }
+
+  _parseRawMarkup() {
+    var content = this.props.article ? marked(this.props.article.body.toString(), {sanitize: true}) : "";
+    return content;
   }
 }
 
